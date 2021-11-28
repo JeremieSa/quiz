@@ -1,5 +1,8 @@
 function header() {
     // Affiche le titre du quizz, le temps restant et score (question répondu sur question total)
+    const startingText = document.createElement('h1');
+    startingText.appendChild(document.createTextNode('Bienvenue dans le quizz des Libellules !'));
+    document.body.appendChild(startingText);
 }
 
 function question() {
@@ -30,16 +33,26 @@ function finQuiz() {
 
 function tempsRestant() {
     // Affichage du temps restant
+    const time = document.createElement('p');
+    time.appendChild(document.createTextNode('Temps restant pour la question: '));
+    let compteur = document.createElement('span');
+    compteur.setAttribute('id', 'cmpt');
+    time.appendChild(compteur);
+    document.body.appendChild(time);
 }
+
+/* Doit fonctionner etre dans Controlleur
 
 function quiz() {
     header();
     tempsRestant();
+    //document.getElementById('cmpt').innerText = "Test";
     question();
 }
 
 function setup() {
     quiz();
 }
+*/
 
 window.addEventListener('DOMContentLoaded', setup);
