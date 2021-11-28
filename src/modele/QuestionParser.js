@@ -1,5 +1,7 @@
 // Prendre les informations de "DataQuestions.csv"
 
+const csvFile = "../DataQuestions.csv";
+
 function getTotalQuestions() {
     // Retourne le nombre total de questions
 }
