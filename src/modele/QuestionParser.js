@@ -1,41 +1,35 @@
-export class QuestionParser {
-    // Methods
-    async getJson() {
-        const response = await fetch("./../data/DataQuestions.json");
-        return response.json();
-    }
+async function getJson() {
+    const response = await fetch("./../data/DataQuestions.json");
+    return response.json();
+}
 
-    async getNbQuestions() {
-        let json = await this.getJson();
-        return json.questionArray.question.length;
-    }
+async function getNbQuestions() {
+    let json = await getJson();
+    return json.questionArray.question.length;
+}
 
-    // QUESTION
-    async getQuestion(index) {
-        let json = await this.getJson();
-        return json.questionArray.question[index];
-    }
+// QUESTION
+async function getQuestion(index) {
+    let json = await getJson();
+    return json.questionArray.question[index];
+}
 
-    async getAllQuestions() {
-        let json = await this.getJson();
-        return json.questionArray.question;
-    }
+async function getAllQuestions() {
+    let json = await getJson();
+    return json.questionArray.question;
+}
 
-    // ANSWER
-    async getAnswer(index) {
-        let json = await this.getJson();
-        return json.questionArray.answer[index];
-    }
+// ANSWER
+async function getAnswer(index) {
+    let json = await getJson();
+    return json.questionArray.answer[index];
+}
 
-    async getAllAnswers() {
-        let json = await this.getJson();
-        return json.questionArray.answer;
-    }
+async function getAllAnswers() {
+    let json = await getJson();
+    return json.questionArray.answer;
 }
 
 // TEST
-/*
-let testParser = new QuestionParser();
-let premiereQuestion = await testParser.getAllAnswers();
+let premiereQuestion = await getAllAnswers();
 console.log(premiereQuestion);
-*/
