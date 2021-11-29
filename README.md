@@ -13,6 +13,8 @@ Ensuite, il faut ouvrir **Quiz.html** situé dans **src/vue**. Si vous n'avez pa
 Ce projet suit une architecture MVC. Nous y avons ajouté des tests dans un dossier **test** et des données dans **src/data**.
 
 ### Quiz
+Tout le traitement des données se fait dans src/controleur/Controleur.js, et tout ce qui est de l'écriture sur la page html se fait dans src/vue/AffichageQuiz.js. 
+Le controleur appelle les fonctions d'AffichageQuiz en fonction de ce qu'il a besoin d'afficher.
 
 ### Gestion des questions et réponses
 Les questions et réponses sont stockés dans un fichier JSON. Nous ne voulions pas écrire en dur ces valeurs et l'utilisation d'un fichier JSON en local semble être un bon choix.
@@ -24,7 +26,7 @@ Dans une version supérieur du projet, nous pouvons imaginer que ce fichier JSON
 Par sauvegarde, nous entendons garder le status de chaque question.
 Une question peut avoir le statut :
 - (0) To complete : Aucune réponse n'a été donnée
-- (1) Wrong : La réponse est mauvaise ou le temps pour y répondre a été atteint sans qu'il y ait de réponses satisfaisantes.
+- (1) Wrong : Le temps pour répondre a été atteint sans qu'il y ait de réponses satisfaisantes.
 - (2) Completed : Correctement répondue
 Grâce à la classe **Sauvegarde.js** située dans **src/modele**, nous stockons ces valeurs dans le local storage à l'aide de la fonctionnalité de clé / valeur.
 Une clé correspond à la question en elle-même *(ex: "Vitesse max libellule ? (km/h)")* et la valeur à un état.

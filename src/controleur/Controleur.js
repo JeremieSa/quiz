@@ -2,10 +2,10 @@
 
 import * as AffichageQuiz from '../vue/AffichageQuiz.js';
 import * as QuestionParser from '../modele/QuestionParser.js';
+import * as Sauvegarde from '../modele/Sauvegardes.js';
 
-let score = 0;
 let currentQuestion = 0;
-let tempsMax = 20;
+let tempsMax = 30;
 let tpsRest, timer;
 
 window.addEventListener('DOMContentLoaded', setup);
@@ -14,6 +14,7 @@ window.addEventListener('DOMContentLoaded', setup);
 async function setup() {
     AffichageQuiz.header(tempsMax);
     tpsRest = tempsMax;
+    Sauvegarde.initLocalStorage(await QuestionParser.getAllQuestions());
     await quiz();
 }
 
@@ -25,6 +26,14 @@ async function quiz() {
         timer = window.setInterval(setTimer, 1000);
     }
     else{
+        let score = 0;
+        let listeState = Sauvegarde.getAllQuestionsState(await QuestionParser.getAllQuestions());
+        listeState.forEach(element => {
+            console.log(localStorage.getItem(element));
+            if (element == "Completed") {
+                score++;
+            }
+        });
         AffichageQuiz.finQuiz(score, nbQ);
     }
 }
@@ -34,7 +43,7 @@ export async function processAnswer(answer){
     let rightAnswer = await QuestionParser.getAnswer(currentQuestion);
     if(answer.trim().toLowerCase() == rightAnswer.trim().toLowerCase()) {
         console.log("Right answer !");
-        score++;
+        Sauvegarde.addOrModifyQuestionState(await QuestionParser.getQuestion(currentQuestion), 2);
         await goToNextQuestion();
     } else {
         console.log("Nope !");
@@ -54,6 +63,7 @@ async function setTimer() {
     tpsRest--;
     AffichageQuiz.majTimer(tpsRest);
     if (tpsRest <= 0){
+        Sauvegarde.addOrModifyQuestionState(await QuestionParser.getQuestion(currentQuestion), 1);
         await goToNextQuestion();
     }
 }

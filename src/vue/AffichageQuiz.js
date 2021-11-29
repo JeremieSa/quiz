@@ -9,6 +9,7 @@ function header(timer) {
     
     // Affichage du temps restant
     const time = document.createElement('p');
+    time.setAttribute('id','time');
     time.appendChild(document.createTextNode('Temps restant pour répondre a la question actuel: '));
     let compteur = document.createElement('span');
     compteur.setAttribute('id', 'cmpt');
@@ -20,11 +21,9 @@ function header(timer) {
 function question(question) {
     // Affiche une question (fait appel au controleur pour savoir quoi afficher)
     const quest = document.createElement('p');
-    // Numero de question
-    // Question
     quest.appendChild(document.createTextNode(question));
     document.body.appendChild(quest);
-    // Espace pour ecrire la reponse
+
     const answerInput = document.createElement('input');
     answerInput.setAttribute('type', 'text');
     answerInput.setAttribute('id', 'answerInput');
@@ -36,14 +35,9 @@ function question(question) {
     submitAnswer.appendChild(document.createTextNode('Submit answer'));
     submitAnswer.addEventListener('click', () => processAnswer(document.getElementById('answerInput').value));
     document.body.appendChild(submitAnswer);
-
-
-    // Bouton submit (fait appel au controleur pour savoir si la reponse est bonne)
 }
 
 function makeLastQuestionInactive() {
-    // (appel constructeur)
-    //window.clearTimeout(idTime);
     // Question precedente :
     // Desactive l'input et supprime le bouton submit de la derniere question
     document.getElementById('answerInput').disabled = true;
@@ -52,7 +46,8 @@ function makeLastQuestionInactive() {
 }
 
 function finQuiz(score, nbQ) {
-    // Message de fin de quiz avec le score et un text du style "Excellent !" ou "Vous etes une merde" selon le score
+    // Message de fin de quiz
+    document.getElementById('time').remove();
     const fin = document.createElement('p');
     fin.appendChild(document.createTextNode('Le quiz est fini! Vous avez obtenu '+ score +' bonnes réponses sur '+ nbQ));
     document.body.appendChild(fin);

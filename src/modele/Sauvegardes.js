@@ -4,7 +4,7 @@ Pour chaque question, nous utiliserons comme cle la question en elle-meme.
 Exemple : "Vitesse max libellule ? (km/h)".
 La valeur sera un des trois etat suivant :
     0 (To complete) : Question pas encore repondue
-    1 (Wrong) : Mauvaise reponse
+    1 (Wrong) : Temps imparti ecoule
     2 (Completed) : Bonne reponse fournie
 */
 
@@ -72,8 +72,3 @@ function clearLocalStorage() {
 }
 
 export {getAllQuestionsState, initLocalStorage, addOrModifyQuestionState, clearLocalStorage};
-
-// TEST
-/*let listeQuest = ["Vitesse max libellule ? (km/h)", "Quel est le nombre d'ailes des libellule ?",
-                "Le type des yeux des libellules ?", "Les libellules ont-elles 3 yeux ? (Oui / Non)"];
-console.log(getAllQuestionsState(listeQuest));*/
