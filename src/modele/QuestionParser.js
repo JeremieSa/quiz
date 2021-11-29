@@ -29,3 +29,5 @@ async function getAllAnswers() {
     let json = await getJson();
     return json.questionArray.answer;
 }
+
+export {getJson, getNbQuestions, getQuestion, getAllQuestions, getAnswer, getAllAnswers};
