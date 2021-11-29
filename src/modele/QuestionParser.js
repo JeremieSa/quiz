@@ -1,11 +1,26 @@
-// Prendre les informations de "DataQuestions.csv"
+export class QuestionParser {
+    // Methods
+    async getJson() {
+        const response = await fetch("./../data/DataQuestions1.json");
+        return response.json();
+    }
 
-const csvFile = "../DataQuestions.csv";
+    async getQuestion(index) {
+        let json = await this.getJson();
+        return json.questionArray.question[index];
+    }
 
-function getTotalQuestions() {
-    // Retourne le nombre total de questions
+    async getAnswer(index) {
+        let json = await this.getJson();
+        return json.questionArray.answer[index];
+    }
+
+    async getNbQuestions() {
+        let json = await this.getJson();
+        return json.questionArray.question.length;
+    }
 }
 
-function getQuestion(index) {
-    // Retourne un objet question correspondant a la question numero "index"
-}
+let testParser = new QuestionParser();
+let premiereQuestion = await testParser.getQuestion(0);
+console.log(premiereQuestion);
