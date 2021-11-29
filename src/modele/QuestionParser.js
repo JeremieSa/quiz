@@ -29,7 +29,3 @@ async function getAllAnswers() {
     let json = await getJson();
     return json.questionArray.answer;
 }
-
-// TEST
-let premiereQuestion = await getAllAnswers();
-console.log(premiereQuestion);
