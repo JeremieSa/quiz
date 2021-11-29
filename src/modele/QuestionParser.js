@@ -21,6 +21,9 @@ export class QuestionParser {
     }
 }
 
+// TEST
+/*
 let testParser = new QuestionParser();
 let premiereQuestion = await testParser.getQuestion(0);
 console.log(premiereQuestion);
+*/
