@@ -1,7 +1,7 @@
 export class QuestionParser {
     // Methods
     async getJson() {
-        const response = await fetch("./../data/DataQuestions1.json");
+        const response = await fetch("./../data/DataQuestions.json");
         return response.json();
     }
 
